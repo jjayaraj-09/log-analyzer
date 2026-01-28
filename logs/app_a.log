@@ -1,0 +1,3 @@
+2026-01-23T10:15:05.501Z ERROR [APP_A] RestTemplate: 500 Internal Server Error from B
+2026-01-23T10:15:05.503Z ERROR [APP_A] CheckoutService: Checkout failed due to upstream service error in B
+2026-01-23T10:15:05.504Z WARN  [APP_A] RequestId=abc123: Upstream dependency failure detected

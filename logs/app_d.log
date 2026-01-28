@@ -1,0 +1,3 @@
+2026-01-23T10:15:02.221Z ERROR [APP_D] RestTemplate: I/O error on GET request to http://app-e/api/customer: Read timed out
+2026-01-23T10:15:02.223Z ERROR [APP_D] CustomerClient: Failed to fetch data from E: java.net.SocketTimeoutException: Read timed out
+2026-01-23T10:15:02.224Z WARN  [APP_D] Fallback triggered for E due to timeout

@@ -1,0 +1,3 @@
+2026-01-23T10:15:04.402Z ERROR [APP_B] FeignClient: Received 500 from C while processing order
+2026-01-23T10:15:04.403Z ERROR [APP_B] OrderController: Unable to process order due to upstream failure in C
+2026-01-23T10:15:04.405Z WARN  [APP_B] CircuitBreaker: Opening circuit for C due to repeated failures
