@@ -53,3 +53,43 @@ def analyze_logs():
         )
 
     return {"count": len(results), "results": results}
+
+
+@router.post("/summarize",summary="Run log analysis",
+    description="jjayaraj log analyzer grabs logs from five different microservice componentts of a same application, analyse the real root cause and summarize them." \
+    " Future - @Tool Agents can be created to take action automatically.")
+def analyze_logs():
+    entries = load_all_logs()
+    clusters = find_error_clusters(entries)
+
+    results = []
+
+    for i, cluster in enumerate(clusters, start=1):
+        
+        combined_clusters = "\n\n".join(
+            f"--- Cluster {i+1} ---\n{c}" for i, c in enumerate(clusters)
+        )
+        analysis = analyze_with_llm(combined_clusters)
+
+        #analysis = analyze_with_llm(cluster)
+
+        # subject = f"[Incident] Error Cluster #{i}"
+        # body = (
+        #     f"Cluster #{i}\n\n"
+        #     f"Raw log lines:\n{format_cluster(cluster)}\n\n"
+        #     f"LLM Analysis:\n{analysis}"
+        # )
+
+        #send_incident_email(subject, body)
+
+        # results.append(
+        #     {
+        #         "cluster_index": i,
+        #         "cluster": cluster,
+        #         "analysis": analysis,
+        #     }
+        # )
+
+    # return {"count": len(results), "results": results}
+    return {"analysis": analysis}
+

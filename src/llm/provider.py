@@ -8,7 +8,11 @@ from src.llm.ollama_client import analyze_with_ollama
 
 
 def analyze_with_llm(cluster):
-    text = format_cluster(cluster)
+    # If the input is already a string (combined clusters), skip formatting
+    if isinstance(cluster, str):
+        text = cluster
+    else:
+        text = format_cluster(cluster)
 
     if LLM_PROVIDER == "groq":
         return analyze_with_groq(text)
